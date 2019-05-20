@@ -24,7 +24,8 @@ if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
     </ul>
     <br>
     <br>  
-    <br>
+    <br> 
+    <div align  = "center"><h1>Mensajes Enviados</h1></div> 
     <input type="text" id="buscar" placeholder="Buscar por Destinatario" onkeyup="buscarPorCorreoOtro()"> 
     <br> 
     <br>

@@ -18,7 +18,7 @@ session_start();
    echo $contraseña;
    $pass = MD5($contraseña);
    echo $pass;
-   $sql = "SELECT * FROM usuario WHERE usu_correo = '$usuario' and usu_password = '$pass'";
+   $sql = "SELECT * FROM usuario WHERE usu_correo = '$usuario' and usu_password = '$pass' and usu_eliminado = 'N'";
    $result = $conn->query($sql);
    $rows = $result->fetch_assoc();
    if ($result->num_rows > 0) {

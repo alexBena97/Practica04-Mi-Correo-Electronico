@@ -43,7 +43,9 @@ if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
                 echo "</tr>";
             }
         } else {  
-            echo "El usuario que intenta buscar no existe";
+            echo "<tr>";
+            echo "   <td colspan='7'> No existe este remitente </td>";
+            echo "</tr>";
         }
         ?>
     </table>

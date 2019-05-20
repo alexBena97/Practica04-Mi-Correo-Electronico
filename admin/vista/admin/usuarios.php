@@ -1,3 +1,9 @@
+<?php 
+session_start();   
+if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE){  
+    header("Location: /SistemaDeGestion/public/vista/login.html"); 
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,7 +23,8 @@
     <br>
     <br>
     <br>
-    <br>
+    <br> 
+    <div align  = "center"><h1>Uusuarios Registrados en el Sistema</h1></div> 
     <table style="width:100%" border="1">
         <tr>
             <th>Codigo</th>
@@ -35,7 +42,7 @@
 
         <?php
         include '../../../config/conexionBD.php';
-        $sql = "SELECT * FROM usuario";
+        $sql = "SELECT * FROM usuario WHERE usu_eliminado = 'N'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
@@ -48,7 +55,7 @@
                 echo "   <td>" . $row['usu_telefono'] . "</td>";
                 echo "   <td>" . $row['usu_correo'] . "</td>";
                 echo "   <td>" . $row['usu_fecha_nacimiento'] . "</td>";
-                echo "   <td>" . "<a href = 'eliminar.php?codigo=" . $row['usu_codigo'] . "'>" . "Eliminar</a>" . "</td>";
+                echo "   <td>" . "<a href = 'eliminarUsuario.php?codigo=" . $row['usu_codigo'] . "'>" . "Eliminar</a>" . "</td>";
                 echo "   <td>" . "<a href = 'modificar.php?codigo=" . $row['usu_codigo'] . "'>" . "Actualizar</a>" . "</td>";
                 echo "   <td>" . "<a href = 'cambiar_contraseña.php?codigo=" . $row['usu_codigo'] . "'>" . "Actualizar Contraseña</a>" . "</td>";
                 echo "</tr>";

@@ -23,7 +23,8 @@ if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE){
     <br> 
     <br>
     <br> 
-    <br> 
+    <br>  
+    <div align  = "center"><h1>Mensajes Electronicos</h1></div> 
     <table style="width:100%" border="1" id="informacion">
         <tr>
             <th>Fecha</th>
