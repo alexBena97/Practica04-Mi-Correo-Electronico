@@ -25,15 +25,16 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
   </ul>
   <br>
   <br>
+  <br> 
+  <input type="text" id="buscar" placeholder="Buscar por Remitente"  onkeyup="buscarPorCorreo()"> 
+  <br> 
   <br>
   <table style="width:100%" border="1" id="informacion">
     <tr>
       <th>Fecha</th>
       <th>Remitente</th>
       <th>Asunto</th>
-      <th><a href="">Leer</a></th>
     </tr>
-    <input type="text" id="buscar" onkeyup="buscarPorCorreo()">
     <?php
     include '../../../config/conexionBD.php';
     $usuario = $_SESSION['usuario'];

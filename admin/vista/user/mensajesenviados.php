@@ -23,6 +23,10 @@ if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
         <li><a href="../../../config/cerrar_sesion_User.php" style="float:right">Cerrar Sesion</a></li>
     </ul>
     <br>
+    <br>  
+    <br>
+    <input type="text" id="buscar" placeholder="Buscar por Destinatario" onkeyup="buscarPorCorreoOtro()"> 
+    <br> 
     <br>
     <table style="width:100%" border="1" id="informacion">
         <tr>
@@ -31,9 +35,6 @@ if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
             <th>ASUNTO</th>
             <th></th>
         </tr>
-        <br>
-        <br>
-        <input type="text" id="buscar" onkeyup="buscarPorCorreoOtro()">
         <?php
         include '../../../config/conexionBD.php';
         $codigo_usuario = $_SESSION['usuario'];
