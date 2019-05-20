@@ -1,0 +1,26 @@
+
+#total { 
+	width: 500%;
+}
+#button { 
+	padding: 0;
+}
+
+#button li { 
+	display: inline;
+} 
+#button li a { 
+	font-family: Arial;
+	font-size: 18px;
+	text-decoration: none;
+	float: left;
+	padding: 10px;
+	color: black;
+} 
+
+a{ 
+    text-decoration: none;  
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px; 
+    color: black; 
+} 
