@@ -29,7 +29,7 @@
     } else {
         echo "<p>Error: " . $sql . "<br>" . mysqli_error($conn) . "</p>";
     }
-    echo "<a href='../../vista/usuario/index.php'>Regresar</a>";
+    echo "<a href='../../vista/user/mensajesenviados.php'>Regresar</a>";
     $conn->close();
     ?>
 </body>

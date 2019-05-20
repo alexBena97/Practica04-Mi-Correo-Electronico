@@ -1,4 +1,4 @@
-function buscarPorCorreo(){ 
+function buscarPorCorreoOtro(){ 
     var correo = document.getElementById("buscar").value;
     //location.href=  "../../controladores/user/buscar.php?correo="+correo
     if(correo==""){ 
@@ -14,8 +14,8 @@ function buscarPorCorreo(){
                 document.getElementById("informacion").innerHTML=this.responseText;
             }
         }; 
-        xmlhttp.open("GET","../../controladores/user/buscar.php?correo="+correo,true); 
+        xmlhttp.open("GET","../../controladores/user/buscar2.php?correo="+correo,true); 
         xmlhttp.send();
     } 
     return false;
-} 
+}

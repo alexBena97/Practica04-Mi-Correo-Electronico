@@ -33,6 +33,5 @@
       <input type="reset" id="cancelar" name="cancelar" value="Cancelar" />
     </fieldset>
   </form>
-</body>
-
+</body> 
 </html>

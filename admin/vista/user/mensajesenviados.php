@@ -6,7 +6,8 @@ session_start();
 
 <head>
     <meta charset="UTF-8">
-    <link href="../../../config/paginas.css" rel="stylesheet" type="text/css" />
+    <link href="../../../config/paginas.css" rel="stylesheet" type="text/css" /> 
+    <script type="text/javascript" src="../../../js/ajax2.js"></script>
     <title>Document</title>
 </head>
 
@@ -19,7 +20,7 @@ session_start();
     </ul>
     <br>
     <br>
-    <table style="width:100%" border="1">
+    <table style="width:100%" border="1" id="informacion">
         <tr>
             <th>FECHA</th>
             <th>DESTINATARIO</th>
@@ -28,7 +29,7 @@ session_start();
         </tr> 
         <br> 
         <br>
-        <input type="text" id="buscar">
+        <input type="text" id="buscar" onkeyup="buscarPorCorreoOtro()">
         <?php
         include '../../../config/conexionBD.php';
         $codigo_usuario = $_SESSION['usuario'];
