@@ -17,14 +17,14 @@
 
         session_start();
         include '../../../config/conexionBD.php';
-        $codigo_destinatario = $_SESSION['usuario'];
+        $codigo_remitente = $_SESSION['usuario'];
         $correo = $_GET['correo'];
         $sql = "SELECT * FROM usuario WHERE usu_correo LIKE '$correo%'";
         $result = $conn->query($sql);
         $row = $result->fetch_assoc();
         $codigo = $row['usu_codigo'];
 
-        $sql_destinatario = "SELECT * FROM correo WHERE correo_remitente = $codigo_destinatario AND correo_destinatario = $codigo ORDER BY correo_fecha_creacion DESC ";
+        $sql_destinatario = "SELECT * FROM correo WHERE correo_remitente = $codigo_remitente AND correo_destinatario = $codigo ORDER BY correo_fecha_creacion DESC ";
         $result2 = $conn->query($sql_destinatario);
         if ($result2->num_rows > 0) {
             while ($row2 = $result2->fetch_assoc()) {

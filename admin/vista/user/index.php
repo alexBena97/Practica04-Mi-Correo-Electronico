@@ -1,5 +1,8 @@
 <?php
-session_start();
+session_start();  
+if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){  
+  header("Location: /SistemaDeGestion/public/vista/login.html"); 
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -13,14 +16,13 @@ session_start();
 </head>
 
 <body>
-  <div id="total">
-    <ul id="button">
-      <li><a href="">INICIO</a></th>
-      <li><a href="nuevomensaje.html">Nuevo Mensaje</a></th>
-      <li><a href="mensajesenviados.php">Mensajes Enviados</a></th>
-      <li><a href="MiCuenta.php">Mi cuenta</a></th>
-    </ul>
-  </div>
+  <ul id="button">
+    <li><a href="">INICIO</a></li>
+    <li><a href="nuevomensaje.php">Nuevo Mensaje</a></li>
+    <li><a href="mensajesenviados.php">Mensajes Enviados</a></li>
+    <li><a href="MiCuenta.php">Mi cuenta</a></li>  
+    <li><a href="../../../config/cerrar_sesion_User.php" style="float:right" >Cerrar Sesion</a></li> 
+  </ul>
   <br>
   <br>
   <br>
@@ -38,12 +40,12 @@ session_start();
     $sql = "SELECT * FROM correo WHERE correo_destinatario = $usuario ORDER BY correo_fecha_creacion DESC";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
-      while ($row = $result->fetch_assoc()) { 
+      while ($row = $result->fetch_assoc()) {
         $codigo_correo = $row['correo_codigo'];
         $correo_remitente = $row['correo_remitente'];
         $sql_correo = "SELECT usu_correo FROM usuario WHERE usu_codigo = '$correo_remitente'";
         $result2 = $conn->query($sql_correo);
-        $row2 = $result2->fetch_assoc(); 
+        $row2 = $result2->fetch_assoc();
         echo "<tr>";
         echo "    <td>" . $row['correo_fecha_creacion'] . "</td>";
         echo "    <td>" . $row2['usu_correo'] . "</td>";

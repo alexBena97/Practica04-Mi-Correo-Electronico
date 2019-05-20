@@ -1,12 +1,15 @@
 <?php
 session_start();
+if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
+    header("Location: /SistemaDeGestion/public/vista/login.html");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <link href="../../../config/paginas.css" rel="stylesheet" type="text/css" /> 
+    <link href="../../../config/paginas.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../../../js/ajax2.js"></script>
     <title>Document</title>
 </head>
@@ -14,9 +17,10 @@ session_start();
 <body>
     <ul id="button">
         <li><a href="index.php">INICIO</a></th>
-        <li><a href="nuevomensaje.html">Nuevo Mensaje</a></th>
+        <li><a href="nuevomensaje.php">Nuevo Mensaje</a></th>
         <li><a href="mensajesenviados.php">Mensajes Enviados</a></th>
         <li><a href="MiCuenta.php">Mi cuenta</a></th>
+        <li><a href="../../../config/cerrar_sesion_User.php" style="float:right">Cerrar Sesion</a></li>
     </ul>
     <br>
     <br>
@@ -26,8 +30,8 @@ session_start();
             <th>DESTINATARIO</th>
             <th>ASUNTO</th>
             <th></th>
-        </tr> 
-        <br> 
+        </tr>
+        <br>
         <br>
         <input type="text" id="buscar" onkeyup="buscarPorCorreoOtro()">
         <?php

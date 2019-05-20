@@ -21,7 +21,7 @@
  $rows= $result->fetch_assoc();
  if($result->num_rows>0){  
     if($rows['usu_rol']== 'user'){ 
-    $_SESSION['isLogged']=TRUE; 
+    $_SESSION['isUser']=TRUE; 
     $_SESSION['usuario']=$rows['usu_codigo'];  
     header("Location:../../admin/vista/user/index.php"); 
     }

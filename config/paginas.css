@@ -1,9 +1,8 @@
 
-#total { 
-	width: 500%;
-}
-#button { 
-	padding: 0;
+#button {  
+	width: 100%;  
+	border: black; 
+	padding: 0%; 
 }
 
 #button li { 
@@ -15,12 +14,11 @@
 	text-decoration: none;
 	float: left;
 	padding: 10px;
-	color: black;
+	color: black; 
+	text-decoration: none;  
 } 
+ 
 
-a{ 
-    text-decoration: none;  
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px; 
-    color: black; 
-} 
+.derecha{ 
+	float: right;
+}
