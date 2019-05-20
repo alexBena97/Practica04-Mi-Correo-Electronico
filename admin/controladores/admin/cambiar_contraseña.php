@@ -1,9 +1,3 @@
-<?php
-session_start();
-if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
-    header("Location: /SistemaDeGestion/public/vista/login.html");
-}
-?>
 <!DOCTYPE html>
 <html>
 
@@ -38,7 +32,7 @@ if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
     } else {
         echo "<p>La contraseña actual no coincide con nuestros registros!!! </p>";
     }
-    echo "<a href='../../vista/user/MiCuenta.php'>Regresar</a>";
+    echo "<a href='../../vista/admin/usuarios.php'>Regresar</a>";
     $conn->close();
 
     ?>
