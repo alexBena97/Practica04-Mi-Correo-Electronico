@@ -2,7 +2,7 @@
 session_start();   
 if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE){  
     header("Location: /SistemaDeGestion/public/vista/login.html"); 
-  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,15 +15,13 @@ if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE){
 <body>
     <header>
         <ul id="button">
-            <li><a>Inicio</a></li>
-            <li><a>Usuarios</a></li> 
+            <li><a href = "index.php">Inicio</a></li>
+            <li><a href = "usuarios.php">Usuarios</a></li> 
             <li><a href="../../../config/cerrar_sesion_Admin.php" style="float:right" >Cerrar Sesion</a></li>
         </ul>
     </header> 
     <br> 
-    <br> 
-    <br> 
-    <input type="text" id="buscar" placeholder="Buscar por Remitente"  onkeyup="buscarPorCorreo()"> 
+    <br>
     <br> 
     <br> 
     <table style="width:100%" border="1" id="informacion">
@@ -36,7 +34,7 @@ if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE){
         </tr> 
         <?php
         include "../../../config/conexionBD.php";
-        $sql = "SELECT * FROM correo";
+        $sql = "SELECT * FROM correo WHERE correo_eliminado = 'N'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {    

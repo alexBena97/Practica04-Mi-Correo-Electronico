@@ -34,10 +34,10 @@ if (!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE) {
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             ?>
-            <form id="formulario01" method="POST" action="../../controladores/user/modificar.php">
+            <form id="formulario01" method="POST" action="../../controladores/admin/eliminar.php">
                 <fieldset>
                     <legend>Eliminar Correo</legend> 
-                    <input type="hidden" id="codigo" name="codigo" value="<?php echo $row['correo_codigo']?>" />
+                    <input type="hidden" id="codigo" name="codigo" value="<?php echo $codigo_correo?>" />
                     <label for="fecha_creacion">fecha de Creacion(*)</label><input type="text" id="fechaCreacion" value="<?php echo  $row['correo_fecha_creacion'] ?>" disabled>
                     <label for="remitente">Remitente(*)</label><input type="text" id="Remitente" value=" <?php echo $correo_remitente ?>" disabled>
                     <label for="destinatario">Destinatario(*)</label><input type="text" id="Destinatario" value=" <?php echo $correo_destinatario ?>" disabled>

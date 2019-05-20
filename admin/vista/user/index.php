@@ -38,7 +38,7 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
     <?php
     include '../../../config/conexionBD.php';
     $usuario = $_SESSION['usuario'];
-    $sql = "SELECT * FROM correo WHERE correo_destinatario = $usuario ORDER BY correo_fecha_creacion DESC";
+    $sql = "SELECT * FROM correo WHERE correo_destinatario = $usuario AND correo_eliminado = 'N' ORDER BY correo_fecha_creacion DESC";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
       while ($row = $result->fetch_assoc()) {
