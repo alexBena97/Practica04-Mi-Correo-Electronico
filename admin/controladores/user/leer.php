@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
+    header("Location: /SistemaDeGestion/public/vista/login.html");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 

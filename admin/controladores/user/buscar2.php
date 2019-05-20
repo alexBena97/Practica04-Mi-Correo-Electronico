@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
+    header("Location: /SistemaDeGestion/public/vista/login.html");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,8 +20,6 @@
             <th><a href="">Leer</a></th>
         </tr>
         <?php
-
-        session_start();
         include '../../../config/conexionBD.php';
         $codigo_remitente = $_SESSION['usuario'];
         $correo = $_GET['correo'];

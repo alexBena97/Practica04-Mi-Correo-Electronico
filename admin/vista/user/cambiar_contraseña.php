@@ -1,20 +1,31 @@
+<?php
+session_start();
+if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
+  header("Location: /SistemaDeGestion/public/vista/login.html");
+}
+?>
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="UTF-8">
-  <title>Cambiar Contraseña</title>
+  <title>Cambiar Contraseña</title> 
+  <link href="../../../config/paginas.css" rel="stylesheet" type="text/css" />
   <link href="../../../config/formulario.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-  <?php
-  session_start();
-  if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
-    header("Location: /SistemaDeGestion/public/vista/login.html");
-  }
-  ?>
-
+  <ul id="button">
+    <li><a href="">INICIO</a></li>
+    <li><a href="nuevomensaje.php">Nuevo Mensaje</a></li>
+    <li><a href="mensajesenviados.php">Mensajes Enviados</a></li>
+    <li><a href="MiCuenta.php">Mi cuenta</a></li>
+    <li><a href="../../../config/cerrar_sesion_User.php" style="float:right">Cerrar Sesion</a></li>
+  </ul>  
+  <br> 
+  <br> 
+  <br> 
+  <br>
   <?php
   $codigo = $_GET["codigo"];
   ?>
@@ -33,5 +44,6 @@
       <input type="reset" id="cancelar" name="cancelar" value="Cancelar" />
     </fieldset>
   </form>
-</body> 
+</body>
+
 </html>

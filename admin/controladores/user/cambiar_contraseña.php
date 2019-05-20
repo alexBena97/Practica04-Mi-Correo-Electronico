@@ -1,3 +1,9 @@
+<?php
+session_start();
+if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
+    header("Location: /SistemaDeGestion/public/vista/login.html");
+}
+?>
 <!DOCTYPE html>
 <html>
 
@@ -7,12 +13,6 @@
 </head>
 
 <body>
-    <?php
-    session_start();
-    if (!isset($_SESSION['isLogged']) || $_SESSION['isLogged'] === FALSE) {
-        header("Location: /SistemaDeGestion/public/vista/login.html");
-    }
-    ?>
 
     <?php
     //incluir conexión a la base de datos
