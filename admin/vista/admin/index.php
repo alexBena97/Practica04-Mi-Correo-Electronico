@@ -39,14 +39,25 @@ if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE){
         $sql = "SELECT * FROM correo";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) { 
+            while ($row = $result->fetch_assoc()) {    
+                $codigo_remitente = $row['correo_remitente'];
+                $sql_remitente = "SELECT usu_correo FROM usuario WHERE usu_codigo = $codigo_remitente"; 
+                $result2 = $conn->query($sql_remitente); 
+                $row_remitente = $result2->fetch_assoc();  
+                 
+                $codigo_destinatario = $row['correo_destinatario'];
+                $sql_destinatario = "SELECT usu_correo FROM usuario WHERE usu_codigo = $codigo_destinatario"; 
+                $result3 = $conn->query($sql_destinatario); 
+                $row_destinatario = $result3->fetch_assoc(); 
+
+
                 $codigo_correo = $row['correo_codigo'];
                 echo "<tr>";
                 echo "    <td>" . $row['correo_fecha_creacion'] . "</td>";
-                echo "    <td>" . $row['correo_remitente'] . "</td>";
-                echo "    <td>" . $row['correo_destinatario'] . "</td>"; 
+                echo "    <td>" . $row_remitente['usu_correo'] . "</td>";
+                echo "    <td>" . $row_destinatario['usu_correo'] . "</td>"; 
                 echo "    <td>" . $row['correo_asunto'] . "</td>";
-                echo "    <td>" . "<a href ='eliminar.php?codigo_correo= ".$codigo_correo."'>" . "Eliminar</a>" . "</td>";
+                echo "    <td>" . "<a href ='eliminar.php?codigo_correo= ".$codigo_correo."&correo_remitente=".$row_remitente['usu_correo'] ."&correo_destinatario=".$row_destinatario['usu_correo']."'>" . "Eliminar</a>" . "</td>";
                 echo "</tr>";
             }
         }
