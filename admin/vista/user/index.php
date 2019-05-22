@@ -23,34 +23,34 @@ if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
     <li><a href="MiCuenta.php">Mi cuenta</a></li>
     <li><a href="../../../config/cerrar_sesion_User.php" style="text-align:right">Cerrar Sesion</a></li>
   </ul>
-  <section id = "fot">
-  <?php
-  include '../../../config/conexionBD.php';
-  $usuario = $_SESSION['usuario'];
-  $sql_usuario = "SELECT * FROM usuario WHERE usu_codigo = $usuario";
-  $result_usuario = $conn->query($sql_usuario);
-  $row_usuario = $result_usuario->fetch_assoc();
-  $nombre_usuario = $row_usuario['usu_nombres'];
-  $apellidos_usuario = $row_usuario['usu_apellidos'];
-  ?>
-  <div>
-    <img id="imagen" class="imag" src="data:image/jpg;base64,<?php echo base64_encode($row_usuario['usu_imagen']) ?>" width="200" height="200">
-    <p><?php echo $nombre_usuario ?>&nbsp<?php echo $apellidos_usuario ?></p>
-  </div>
-</section>
-<br> 
-    <br>
-    <br> 
-    <br> 
-    <br> 
-    <br>
-    <br> 
-    <br>
-    <br>
-    <br>  
-    <br> 
-    <br>>
-  <div align = "center">
+  <section id="fot">
+    <?php
+    include '../../../config/conexionBD.php';
+    $usuario = $_SESSION['usuario'];
+    $sql_usuario = "SELECT * FROM usuario WHERE usu_codigo = $usuario";
+    $result_usuario = $conn->query($sql_usuario);
+    $row_usuario = $result_usuario->fetch_assoc();
+    $nombre_usuario = $row_usuario['usu_nombres'];
+    $apellidos_usuario = $row_usuario['usu_apellidos'];
+    ?>
+    <div>
+      <img id="imagen" class="imag" src="data:image/jpg;base64,<?php echo base64_encode($row_usuario['usu_imagen']) ?>" width="200" height="200">
+      <p><?php echo $nombre_usuario ?>&nbsp<?php echo $apellidos_usuario ?></p>
+    </div>
+  </section>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>>
+  <div align="center">
     <h1>Mensajes Recibidos</h1>
   </div>
   <input type="text" id="buscar" placeholder="Buscar por Remitente" onkeyup="buscarPorCorreo()">

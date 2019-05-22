@@ -59,7 +59,7 @@ if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE){
         </tr> 
         <?php
         include "../../../config/conexionBD.php";
-        $sql = "SELECT * FROM correo WHERE correo_eliminado = 'N'";
+        $sql = "SELECT * FROM correo WHERE correo_eliminado = 'N' ORDER BY correo_fecha_creacion DESC";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {    
