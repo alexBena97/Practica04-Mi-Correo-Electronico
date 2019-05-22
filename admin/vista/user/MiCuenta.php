@@ -57,7 +57,6 @@ if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
             <th>Telefono</th>
             <th>Correo</th>
             <th>Fecha Nacimiento</th>
-            <th>Eliminar</th>
             <th>Modificar</th>
             <th>Cambiar Contraseña</th>
         </tr>
@@ -78,7 +77,6 @@ if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
                 echo "   <td>" . $row['usu_telefono'] . "</td>";
                 echo "   <td>" . $row['usu_correo'] . "</td>";
                 echo "   <td>" . $row['usu_fecha_nacimiento'] . "</td>";
-                echo "   <td>" . "<a href = 'eliminar.php?codigo=" . $row['usu_codigo'] . "'>" . "Eliminar</a>" . "</td>";
                 echo "   <td>" . "<a href = 'modificar.php?codigo=" . $row['usu_codigo'] . "'>" . "Actualizar</a>" . "</td>";
                 echo "   <td>" . "<a href = 'cambiar_contraseña.php?codigo=" . $row['usu_codigo'] . "'>" . "Actualizar Contraseña</a>" . "</td>";
                 echo "</tr>";
