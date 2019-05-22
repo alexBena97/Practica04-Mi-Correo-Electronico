@@ -20,14 +20,26 @@ if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
         <li><a href="nuevomensaje.php">Nuevo Mensaje</a></th>
         <li><a href="mensajesenviados.php">Mensajes Enviados</a></th>
         <li><a href="MiCuenta.php">Mi cuenta</a></th>
-        <li><a href="../../../config/cerrar_sesion_User.php" style="float:right">Cerrar Sesion</a></li>
+        <li><a href="../../../config/cerrar_sesion_User.php">Cerrar Sesion</a></li>
     </ul>
+    <?php
+    include '../../../config/conexionBD.php';
+    $usuario = $_SESSION['usuario'];
+    $sql_usuario = "SELECT * FROM usuario WHERE usu_codigo = $usuario";
+    $result_usuario = $conn->query($sql_usuario);
+    $row_usuario = $result_usuario->fetch_assoc();
+    $nombre_usuario = $row_usuario['usu_nombres'];
+    $apellidos_usuario = $row_usuario['usu_apellidos'];
+    ?>
+    <div align="right">
+        <img id="imagen" class="imag" src="data:image/jpg;base64,<?php echo base64_encode($row_usuario['usu_imagen']) ?>" width="200" height="200">
+        <p><?php echo $nombre_usuario ?>&nbsp<?php echo $apellidos_usuario ?></p>
+    </div> 
+    <div align="center">
+        <h1>Mensajes Enviados</h1>
+    </div>
+    <input type="text" id="buscar" placeholder="Buscar por Destinatario" onkeyup="buscarPorCorreoOtro()">
     <br>
-    <br>  
-    <br> 
-    <div align  = "center"><h1>Mensajes Enviados</h1></div> 
-    <input type="text" id="buscar" placeholder="Buscar por Destinatario" onkeyup="buscarPorCorreoOtro()"> 
-    <br> 
     <br>
     <table style="width:100%" border="1" id="informacion">
         <tr>

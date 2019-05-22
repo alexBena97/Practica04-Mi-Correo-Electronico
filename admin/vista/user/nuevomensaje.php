@@ -15,16 +15,16 @@ if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
 </head>
 
 <body>
-    <ul id="button">
-        <li><a href="index.php">INICIO</a></th>
-        <li><a href="nuevomensaje.php">Nuevo Mensaje</a></th>
-        <li><a href="mensajesenviados.php">Mensajes Enviados</a></th>
-        <li><a href="MiCuenta.php">Mi cuenta</a></th>
-        <li><a href="../../../config/cerrar_sesion_User.php" style="float:right">Cerrar Sesion</a></li>
-    </ul>
-    <br>
-    <br>
-    <br>
+    <section>
+        <ul id="button">
+            <li><a href="index.php">INICIO</a></th>
+            <li><a href="nuevomensaje.php">Nuevo Mensaje</a></th>
+            <li><a href="mensajesenviados.php">Mensajes Enviados</a></th>
+            <li><a href="MiCuenta.php">Mi cuenta</a></th>
+            <li><a href="../../../config/cerrar_sesion_User.php" align = "right">Cerrar Sesion</a></li>
+        </ul>
+    </section>
+    <br> 
     <br>
     <br>
     <br>
@@ -35,7 +35,7 @@ if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
             <label for="Asunto">ASUNTO(*)</label><textarea name="asunto"></textarea>
             <label for="Mensaje">MENSAJE(*)</label> <textarea name="mensaje"></textarea>
             <input type="submit" value="Enviar Mensaje">
-
+        </fieldset>
     </form>
 </body>
 

@@ -19,8 +19,30 @@ if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
         <li><a href="nuevomensaje.php">Nuevo Mensaje</a></th>
         <li><a href="mensajesenviados.php">Mensajes Enviados</a></th>
         <li><a href="MiCuenta.php">Mi cuenta</a></th>
-        <li><a href="../../../config/cerrar_sesion_User.php" style="float:right">Cerrar Sesion</a></li>
+        <li><a href="../../../config/cerrar_sesion_User.php">Cerrar Sesion</a></li>
     </ul>
+    <section id="fot">
+    <?php
+    include '../../../config/conexionBD.php';
+    $usuario = $_SESSION['usuario'];
+    $sql_usuario = "SELECT * FROM usuario WHERE usu_codigo = $usuario";
+    $result_usuario = $conn->query($sql_usuario);
+    $row_usuario = $result_usuario->fetch_assoc();
+    $nombre_usuario = $row_usuario['usu_nombres'];
+    $apellidos_usuario = $row_usuario['usu_apellidos'];
+    ?>
+    <div>
+        <img id="imagen" class="imag" src="data:image/jpg;base64,<?php echo base64_encode($row_usuario['usu_imagen']) ?>" width="200" height="200">
+        <p><?php echo $nombre_usuario ?>&nbsp<?php echo $apellidos_usuario ?></p>
+        <form method="POST" action="../../controladores/user/enviarImagen.php" enctype="multipart/form-data">
+            <input type="file" id="fotoPerfil" name="fotoPerfil">
+            <br>
+            <input type="submit" id="cargar" value="Cargar Imagen"> 
+            <br> 
+            <br>
+        </form> 
+    </div>
+    </section>
     <br>
     <br>
     <br>

@@ -23,14 +23,20 @@ if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
     $result = $conn->query($sql_des);
     $row = $result->fetch_assoc();
     $codigo_des = $row['usu_codigo'];
-    $sql = "INSERT INTO correo VALUES (null, $codigo_usuario,$codigo_des,'$asunto','$mensaje',null)";
-    if ($conn->query($sql) === TRUE) {
-        echo "Se ha mandado el correo correctamente <br>";
-    } else {
-        echo "Error:" . $sql . "<br>" . $conn->errno . "br";
+    $rol_usu = $row['usu_rol'];
+    if ($rol_usu == 'user') {
+        $sql = "INSERT INTO correo VALUES (null, $codigo_usuario,$codigo_des,'$asunto','$mensaje',null,'N',null)";
+        if ($conn->query($sql) === TRUE) {
+            echo "Se ha mandado el correo correctamente <br>";
+        } else {
+            echo "Error:" . $sql . "<br>" . $conn->errno . "br";
+            echo " No se puede mandar un correo a este destinatario";
+        }
+        echo "<a href='../../vista/user/nuevomensaje.php'>Regresar</a>";
+        $conn->close();
+    }else{ 
+        echo "No se puede manda un mensaje a este destinatario";
     }
-    echo "<a href='../../vista/user/nuevomensaje.php'>Regresar</a>";
-    $conn->close();
     ?>
 
 </body>

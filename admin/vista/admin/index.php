@@ -14,24 +14,48 @@ if(!isset($_SESSION['isAdmin']) || $_SESSION['isAdmin'] === FALSE){
 
 <body>
     <header>
-        <ul id="button">
+        <ul>
             <li><a href = "index.php">Inicio</a></li>
             <li><a href = "usuarios.php">Usuarios</a></li> 
-            <li><a href="../../../config/cerrar_sesion_Admin.php" style="float:right" >Cerrar Sesion</a></li>
-        </ul>
+            <li><a href="../../../config/cerrar_sesion_Admin.php">Cerrar Sesion</a></li>
+        </ul> 
+
+        <section id="fot">
+            <br>
+        <?php
+        include '../../../config/conexionBD.php';
+        $usuario = $_SESSION['usuario'];
+        $sql_usuario = "SELECT * FROM usuario WHERE usu_codigo = $usuario";
+        $result_usuario = $conn->query($sql_usuario);
+        $row_usuario = $result_usuario->fetch_assoc();
+        $nombre_usuario = $row_usuario['usu_nombres'];
+        $apellidos_usuario = $row_usuario['usu_apellidos'];
+        ?>
+        <div>
+            <img id="imagen" class="imag" src="data:image/jpg;base64,<?php echo base64_encode($row_usuario['usu_imagen']) ?>" width="200" height="200">
+            <p><?php echo $nombre_usuario ?>&nbsp<?php echo $apellidos_usuario ?></p>
+        </div>
+</section>
     </header> 
     <br> 
     <br>
     <br> 
-    <br>  
-    <div align  = "center"><h1>Mensajes Electronicos</h1></div> 
-    <table style="width:100%" border="1" id="informacion">
+    <br> 
+    <br> 
+    <br>
+    <br> 
+    <br>
+    <br>
+    <br> 
+     
+    <div><h1>Mensajes Electronicos</h1></div> 
+    <table style="width:100%"  id="informacion" class = "customers">
         <tr>
             <th>Fecha</th>
             <th>Remitente</th>
             <th>Destinatario</th>
             <th>Asunto</th>
-            <th></th>
+            <th>Eliminar</th>
         </tr> 
         <?php
         include "../../../config/conexionBD.php";

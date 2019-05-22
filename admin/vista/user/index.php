@@ -1,7 +1,7 @@
 <?php
-session_start();  
-if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){  
-  header("Location: /SistemaDeGestion/public/vista/login.html"); 
+session_start();
+if (!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE) {
+  header("Location: /SistemaDeGestion/public/vista/login.html");
 }
 ?>
 <!DOCTYPE html>
@@ -20,25 +20,50 @@ if(!isset($_SESSION['isUser']) || $_SESSION['isUser'] === FALSE){
     <li><a href="">INICIO</a></li>
     <li><a href="nuevomensaje.php">Nuevo Mensaje</a></li>
     <li><a href="mensajesenviados.php">Mensajes Enviados</a></li>
-    <li><a href="MiCuenta.php">Mi cuenta</a></li>  
-    <li><a href="../../../config/cerrar_sesion_User.php" style="float:right" >Cerrar Sesion</a></li> 
+    <li><a href="MiCuenta.php">Mi cuenta</a></li>
+    <li><a href="../../../config/cerrar_sesion_User.php" style="text-align:right">Cerrar Sesion</a></li>
   </ul>
+  <section id = "fot">
+  <?php
+  include '../../../config/conexionBD.php';
+  $usuario = $_SESSION['usuario'];
+  $sql_usuario = "SELECT * FROM usuario WHERE usu_codigo = $usuario";
+  $result_usuario = $conn->query($sql_usuario);
+  $row_usuario = $result_usuario->fetch_assoc();
+  $nombre_usuario = $row_usuario['usu_nombres'];
+  $apellidos_usuario = $row_usuario['usu_apellidos'];
+  ?>
+  <div>
+    <img id="imagen" class="imag" src="data:image/jpg;base64,<?php echo base64_encode($row_usuario['usu_imagen']) ?>" width="200" height="200">
+    <p><?php echo $nombre_usuario ?>&nbsp<?php echo $apellidos_usuario ?></p>
+  </div>
+</section>
+<br> 
+    <br>
+    <br> 
+    <br> 
+    <br> 
+    <br>
+    <br> 
+    <br>
+    <br>
+    <br>  
+    <br> 
+    <br>>
+  <div align = "center">
+    <h1>Mensajes Recibidos</h1>
+  </div>
+  <input type="text" id="buscar" placeholder="Buscar por Remitente" onkeyup="buscarPorCorreo()">
   <br>
   <br>
-  <br>  
-  <div align  = "center"><h1>Mensajes Recibidos</h1></div> 
-  <input type="text" id="buscar" placeholder="Buscar por Remitente"  onkeyup="buscarPorCorreo()"> 
-  <br> 
-  <br>
-  <table style="width:100%" border="1" id="informacion">
+  <table id="informacion">
     <tr>
       <th>Fecha</th>
       <th>Remitente</th>
       <th>Asunto</th>
+      <th>Leer</th>
     </tr>
     <?php
-    include '../../../config/conexionBD.php';
-    $usuario = $_SESSION['usuario'];
     $sql = "SELECT * FROM correo WHERE correo_destinatario = $usuario AND correo_eliminado = 'N' ORDER BY correo_fecha_creacion DESC";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
